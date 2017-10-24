@@ -1,7 +1,7 @@
 package com.chai.share.common.domain;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Timestamp;
 
 /**
  * 用户实体类
@@ -11,21 +11,25 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 0;
 
-    private String id;  //用户Id
+    private long id;  //用户Id
 
     private String userName;    //用户名
 
-    private String userPwd;     //用户密码
+    private String userPassword;     //用户密码
 
     private String email;   //用户邮箱
 
-    private Date birthday;  //用户生日
+    private Timestamp birthday;  //用户生日
 
-    public String getId() {
+    private Timestamp createTime;
+
+    private Timestamp updateTime;
+
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -37,12 +41,12 @@ public class User implements Serializable {
         this.userName = userName;
     }
 
-    public String getUserPwd() {
-        return userPwd;
+    public String getUserPassword() {
+        return userPassword;
     }
 
-    public void setUserPwd(String userPwd) {
-        this.userPwd = userPwd;
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
     public String getEmail() {
@@ -53,22 +57,40 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public Date getBirthday() {
+    public Timestamp getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(Timestamp birthday) {
         this.birthday = birthday;
+    }
+
+    public Timestamp getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
+    }
+
+    public Timestamp getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Timestamp updateTime) {
+        this.updateTime = updateTime;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", userName='" + userName + '\'' +
-                ", userPwd='" + userPwd + '\'' +
+                ", userPassword='" + userPassword + '\'' +
                 ", email='" + email + '\'' +
                 ", birthday=" + birthday +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
                 '}';
     }
 }
