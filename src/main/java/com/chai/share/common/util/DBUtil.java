@@ -1,12 +1,9 @@
 package com.chai.share.common.util;
 
-import com.chai.share.common.domain.User;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.*;
 import java.util.*;
-import java.util.Date;
 
 /**
  * Created by chaixinli on 2017/10/21.
@@ -21,6 +18,23 @@ public class DBUtil<T> {
 
     static {
         dbConn = new DBConn();
+    }
+
+    /**
+     * 修改表中的数据
+     * @param sql
+     * @return
+     */
+    public int updateTable(String sql, List params) {
+        int count = -1;
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            this.getParamsType(preparedStatement, params);
+            count = preparedStatement.executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
     }
 
     /**
