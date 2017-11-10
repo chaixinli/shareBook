@@ -40,7 +40,7 @@ public class DBConn {
     /**
      * 构造函数，默认加载配置文件为jdbc.driver
      */
-    public DBConn() {
+    private DBConn() {
         this.connection = this.getConnection();
     }
 
